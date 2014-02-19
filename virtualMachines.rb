@@ -1,24 +1,5 @@
 #!/usr/bin/env ruby
-
 require 'FileUtils'
-
-class CheckFile
-
-	def ExistVMS
-
-		file = File.exist?("VMS");
-
-		if file
-			puts "arquivo existe"
-		else
-			puts "arquivo nao existe"
-			system("VBoxManage list vms > VMS")
-			puts "arquivo Criado"
-		end
-
-	end
-
-end
 
 class VirtualMachines
 
@@ -64,7 +45,7 @@ class VirtualMachines
 
 	def ExportMachine(machine)
 
-		machine = machine.strip
+		machine = machine.to_s.strip
 
 		if !File.directory?(machine)
 
@@ -80,13 +61,17 @@ class VirtualMachines
 		if !File.directory?('#{machine}/metadata.json')
 
 			file = File.new("#{machine}/metadata.json", "w")
-			file.write("{ \"provider\":\"virtualbox\" }")
+			file.write("{
+  \"provider\": \"virtualbox\"
+}")
             file.close
 
         else
 
 			file = File.new("#{machine}/metadata.json", "w")
-			file.write("{ \"provider\":\"virtualbox\" }")
+			file.write("{
+  \"provider\": \"virtualbox\"
+}")
             file.close
 
 		end
@@ -115,25 +100,10 @@ end")
 
         file.close
 
-        # system("VBoxManage export #{machine} --output #{machine}/box.ovf")
+        system("VBoxManage export #{machine} --output #{machine}/box.ovf")
 
-        # system("tar -cvzf #{machine}/#{machine}.box ./*")
+        system("tar -cvzf /Users/rogersouza/Downloads/#{machine}.box ./#{machine}/*")
 
 	end
 
 end
-
-mh = CheckFile.new
-# mh.ExistVMS
-
-mz = VirtualMachines.new
-machines = mz.AddMachines
-
-mz.ExportMachine(machines[4])
-
-# puts mz.ListMachines
-# puts mz.AnyMachines(mz.AddMachines)
-
-v1 = ARGV[0]
-
-# $?.exitstatus

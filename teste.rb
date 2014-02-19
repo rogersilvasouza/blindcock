@@ -119,11 +119,9 @@ end")
 
         file.close
 
-        # system("VBoxManage export #{machine} --output #{machine}/box.ovf")
+        system("VBoxManage export #{machine} --output #{machine}/box.ovf")
 
-        # system("tar -cvzf #{machine}/#{machine}.box ./*")
-
-        # system("tar -cvzf --quiet #{machine}/#{machine}.box ./*")
+        system("tar -cvzf /Users/rogersouza/Downloads/#{machine}.box ./#{machine}/*")
 
 	end
 
@@ -136,9 +134,6 @@ mz = VirtualMachines.new
 machines = mz.AddMachines
 
 mz.ExportMachine(machines[0])
-
-# puts mz.ListMachines
-# puts mz.AnyMachines(mz.AddMachines)
 
 v1 = ARGV[0]
 

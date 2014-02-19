@@ -1,14 +1,15 @@
 #!/usr/bin/env ruby
 
-require 'classes/vms/virtualMachines.rb'
+require File.expand_path(File.join(File.dirname(__FILE__), 'checkFile'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'VirtualMachines'))
 
 mh = CheckFile.new
-# mh.ExistVMS
+mh.ExistVMS
 
 mz = VirtualMachines.new
 machines = mz.AddMachines
 
-mz.ExportMachine(machines[4])
+mz.ExportMachine(machines[0])
 
 # puts mz.ListMachines
 # puts mz.AnyMachines(mz.AddMachines)
