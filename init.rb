@@ -1,19 +1,34 @@
 #!/usr/bin/env ruby
 
-require File.expand_path(File.join(File.dirname(__FILE__), 'checkFile'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'VirtualMachines'))
+	require File.expand_path(File.join(File.dirname(__FILE__), 'checkFile'))
+	require File.expand_path(File.join(File.dirname(__FILE__), 'VirtualMachines'))
 
-mh = CheckFile.new
-mh.ExistVMS
+	option = ARGV[0]
 
-mz = VirtualMachines.new
-machines = mz.AddMachines
+	if option == "-v"
 
-mz.ExportMachine(machines[0])
+		puts "Version 0.1"
+
+	end
+
+	if option == "-l"
+
+		mc = VirtualMachines.new
+		mc.ListMachines
+
+	end
+
+# mh = CheckFile.new
+# mh.ExistVMS
+
+# mz = VirtualMachines.new
+# machines = mz.AddMachines
+
+# mz.ExportMachine(machines[0])
 
 # puts mz.ListMachines
 # puts mz.AnyMachines(mz.AddMachines)
 
-v1 = ARGV[0]
+
 
 # $?.exitstatus
