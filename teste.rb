@@ -64,7 +64,7 @@ class VirtualMachines
 
 	def ExportMachine(machine)
 
-		machine = machine.strip
+		machine = machine.to_s.strip
 
 		if !File.directory?(machine)
 
@@ -130,12 +130,12 @@ end")
 end
 
 mh = CheckFile.new
-# mh.ExistVMS
+mh.ExistVMS
 
 mz = VirtualMachines.new
 machines = mz.AddMachines
 
-mz.ExportMachine(machines[4])
+mz.ExportMachine(machines[0])
 
 # puts mz.ListMachines
 # puts mz.AnyMachines(mz.AddMachines)
