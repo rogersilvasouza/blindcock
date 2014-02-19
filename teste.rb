@@ -80,13 +80,17 @@ class VirtualMachines
 		if !File.directory?('#{machine}/metadata.json')
 
 			file = File.new("#{machine}/metadata.json", "w")
-			file.write("{ \"provider\":\"virtualbox\" }")
+			file.write("{
+  \"provider\": \"virtualbox\"
+}")
             file.close
 
         else
 
 			file = File.new("#{machine}/metadata.json", "w")
-			file.write("{ \"provider\":\"virtualbox\" }")
+			file.write("{
+  \"provider\": \"virtualbox\"
+}")
             file.close
 
 		end
@@ -118,6 +122,8 @@ end")
         # system("VBoxManage export #{machine} --output #{machine}/box.ovf")
 
         # system("tar -cvzf #{machine}/#{machine}.box ./*")
+
+        # system("tar -cvzf --quiet #{machine}/#{machine}.box ./*")
 
 	end
 
