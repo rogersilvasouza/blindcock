@@ -6,7 +6,7 @@ class VirtualMachines
 	def AddMachines
 
 		array = Array.new
-		file  = File.new("VMS", "r")
+		file  = File.new(".vms", "r")
 
 		while (line = file.gets)
 			line, *rest = line.split('{')
@@ -24,7 +24,7 @@ class VirtualMachines
 	def ListMachines
 
 		array = Array.new
-		file  = File.new("VMS", "r")
+		file  = File.new(".vms", "r")
 
 		while (line = file.gets)
 			line, *rest = line.split('{')
@@ -43,7 +43,7 @@ class VirtualMachines
 
 	end
 
-	def ExportMachine(machine)
+	def ExportMachine(machine, dir)
 
 		machine = machine.to_s.strip
 
@@ -102,8 +102,35 @@ end")
 
         system("VBoxManage export #{machine} --output #{machine}/box.ovf")
 
-        system("tar -cvzf /Users/rogersouza/Downloads/#{machine}.box ./#{machine}/*")
+        system("tar -cvzf #{dir}/#{machine}.box ./#{machine}/*")
 
+	end
+
+	def CheckMachineAvaliabilty(machine)
+
+		array = Array.new
+		file  = File.new(".vms", "r")
+
+		while (line = file.gets)
+			line, *rest = line.split('{')
+			line = line.delete!('"')
+			line = line.strip
+			array.push(line)
+		end
+
+		if !array.include?(machine)
+			puts "Machine does not exist, please check which machines exist or reload its configuration file"
+			exit
+		end
+
+		file.close
+		
+	end
+
+	def RemoveExportedMachine(machine)
+
+		FileUtils.rm_rf "#{machine}"
+		
 	end
 
 end
