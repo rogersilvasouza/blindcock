@@ -132,13 +132,13 @@ end")
 		end
 
 		file.close
-		
+
 	end
 
 	def RemoveExportedMachine(machine)
 
 		FileUtils.rm_rf "#{machine}"
-		
+
 	end
 
 end
