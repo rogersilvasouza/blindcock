@@ -102,7 +102,18 @@ end")
 
         system("VBoxManage export #{machine} --output #{machine}/box.ovf")
 
-        system("tar -cvzf #{dir}/#{machine}.box ./#{machine}/*")
+        if dir
+
+        	system("tar -cvzf #{dir}/#{machine}.box ./#{machine}/*")
+
+        else
+
+        	system("tar -cvzf #{machine}.box ./#{machine}/*")
+
+        end
+
+
+        
 
 	end
 
