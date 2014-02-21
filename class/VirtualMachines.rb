@@ -43,7 +43,7 @@ class VirtualMachines
 
 	end
 
-	def ExportMachine(machine, dir)
+	def ExportMachine(machine, dir = nil)
 
 		machine = machine.to_s.strip
 
@@ -111,9 +111,6 @@ end")
         	system("tar -cvzf #{machine}.box ./#{machine}/*")
 
         end
-
-
-        
 
 	end
 

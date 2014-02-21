@@ -34,9 +34,7 @@
 
 				machines.CheckMachineAvaliabilty(option2)
 
-				if option3
-
-					if File.directory?(option3)
+					if File.directory?(option3.to_s)
 
 						machines.ExportMachine(option2, option3)
 						machines.RemoveExportedMachine(option2)
@@ -44,17 +42,11 @@
 
 					else
 
-						puts "The directory entered does not exist, please inform an existing"
+                        machines.ExportMachine(option2, nil)
+						machines.RemoveExportedMachine(option2)
 						exit
 
 					end
-
-				else
-
-					puts "Please enter the output file"
-					exit
-
-				end
 
 			end
 
