@@ -34,19 +34,19 @@
 
 				machines.CheckMachineAvaliabilty(option2)
 
-					if File.directory?(option3.to_s)
+				if File.directory?(option3.to_s)
 
-						machines.ExportMachine(option2, option3)
-						machines.RemoveExportedMachine(option2)
-						exit
+					machines.ExportMachine(option2, option3)
+					machines.RemoveExportedMachine(option2)
+					exit
 
-					else
+				else
 
-                        machines.ExportMachine(option2, nil)
-						machines.RemoveExportedMachine(option2)
-						exit
+                    machines.ExportMachine(option2, nil)
+					machines.RemoveExportedMachine(option2)
+					exit
 
-					end
+				end
 
 			end
 
@@ -64,7 +64,5 @@
 
 # puts mz.ListMachines
 # puts mz.AnyMachines(mz.AddMachines)
-
-
 
 # $?.exitstatus
